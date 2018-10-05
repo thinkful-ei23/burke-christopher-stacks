@@ -78,9 +78,9 @@ function matchingParentheses(string) {
   for (let i = 0; i < string.length; i++) {
     const node = pStack.pop();
     if (node === '(') {
-      lastPositive = i + 1; 
+      lastPositive = i + 1;
       counter++;
-    } else if (node ===')') {
+    } else if (node === ')') {
       lastPositive--;
       counter--;
     }
@@ -96,7 +96,7 @@ function matchingParentheses(string) {
 
 }
 
-console.log(matchingParentheses(''));
+// console.log(matchingParentheses(''));
 
 function main() {
   const starTrek = new Stack();
