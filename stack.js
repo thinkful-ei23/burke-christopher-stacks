@@ -49,6 +49,15 @@ function display(stack, currentNode=stack.top) {
   }
 }
 
+function palindromeFinder(palindrome) {
+  // abba
+  // put the last letter into the stack
+  // go backwards putting the letter into the stack
+  // new stack = a b b a
+  // 
+
+}
+
 function main() {
   const starTrek = new Stack();
 
