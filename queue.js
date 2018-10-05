@@ -2,8 +2,8 @@
 class _Node {
   constructor(value) {
     this.value = value,
-      this.next = null,
-      this.prev = null;
+    this.next = null,
+    this.prev = null;
   }
 }
 
@@ -61,18 +61,22 @@ function peek(queue) {
 }
 
 function display(queue, currentNode = queue.first) {
-  if (currentNode.next === null) {
+  if (currentNode.prev === null) {
     return currentNode.value;
   } else {
-    return currentNode.value + ' ' + display(queue, currentNode.next);
+    return currentNode.value + ' ' + display(queue, currentNode.prev);
   }
 }
 
 function main() {
   const starTrek = new Queue();
-  starTrek.queue('Kirk');
-  starTrek.queue('Spock');
-  starTrek.queue('Uhura');
-  starTrek.queue('Sulu');
-  starTrek.queue('Checkov');
+  starTrek.enqueue('Kirk');
+  starTrek.enqueue('Spock');
+  starTrek.enqueue('Uhura');
+  starTrek.enqueue('Sulu');
+  starTrek.enqueue('Checkov');
+  starTrek.dequeue();
+  starTrek.dequeue();
+  console.log(display(starTrek));
 }
+main();
