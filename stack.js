@@ -32,5 +32,23 @@ class Stack {
     const node = this.top;
     this.top = node.next;
     return node.data;
+  }
 }
+
+// writing our own stack and node class 
+
+class _Node2 {
+  constructor(data, next) {
+    this.data = data;
+    this.next = next;
+  }
 }
+
+class Stack2 {
+  constructor() {
+    this.top = null;
+  }
+
+  
+}
+
