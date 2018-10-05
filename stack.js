@@ -24,6 +24,7 @@ class Stack {
     // have the pointer point to the top 
     const node = new _Node(data, this.top);
     this.top = node;
+    // top points to the one below it
   }
   pop() {
     //in order to remove the top of the stack, you have to point
@@ -49,6 +50,6 @@ class Stack2 {
     this.top = null;
   }
 
-  
+
 }
 
