@@ -56,6 +56,9 @@ function main() {
   starTrek.push('McCoy');
   starTrek.push('Spock');
   starTrek.push('Kirk');
+  starTrek.pop();
+  starTrek.pop();
+  starTrek.pop();
   console.log(display(starTrek));
   // console.log(JSON.stringify(starTrek));
 }
