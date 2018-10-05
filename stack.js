@@ -49,6 +49,15 @@ class Stack2 {
     this.top = null;
   }
 
-  
+  push2(data) {
+    if (this.top === null) {
+      this.top = new _Node2(data, null);
+      return this.top;
+    }
+
+    const node = new _Node2(data, this.top);
+    this.top = node;
+  }
+
 }
 
