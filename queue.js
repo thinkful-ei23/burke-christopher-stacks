@@ -26,6 +26,7 @@ class Queue {
     //if there is something on the queue already
     //then take the node that is currently at the end of the queue
     //and link it to the new node
+
     if (this.last) {
       node.next = this.last;
       this.last.prev = node;
