@@ -41,13 +41,33 @@ function peek(stack) {
   return stack.top;
 }
 
-function display(stack, currentNode=stack.top) {
+function display(stack, currentNode = stack.top) {
   if (currentNode.next === null) {
     return currentNode.data;
   } else {
     return currentNode.data + ' ' + display(stack, currentNode.next);
   }
 }
+
+function is_palindrome(word) {
+  word = word.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
+  const forwardStack = new Stack();
+  const backwardStack = new Stack();
+
+  for (let i = 0; i < word.length; i++) {
+    forwardStack.push(word[i]);
+  }
+  for (let i = (word.length - 1); i >= 0; i--) {
+    backwardStack.push(word[i]);
+  }
+  for (let i = 0; i < word.length; i++) {
+    if (forwardStack.pop() !== backwardStack.pop()) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(is_palindrome('A man, a plan, a canal: Panama'));
 
 function main() {
   const starTrek = new Stack();
@@ -59,7 +79,7 @@ function main() {
   starTrek.pop();
   starTrek.pop();
   starTrek.pop();
-  console.log(display(starTrek));
+  // console.log(display(starTrek));
   // console.log(JSON.stringify(starTrek));
 }
 
