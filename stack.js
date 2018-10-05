@@ -54,7 +54,7 @@ function is_palindrome(word) {
   const forwardStack = new Stack();
   const backwardStack = new Stack();
   for (let i = 0; i < word.length; i++) {
-    forwardStack.push(word[i]); // 0 1 2 3
+    forwardStack.push(word[i]);
     backwardStack.push(word[word.length - (i + 1)]);
   }
   for (let i = 0; i < word.length; i++) {
@@ -65,8 +65,38 @@ function is_palindrome(word) {
   return true;
 }
 
+function matchingParentheses(string) {
+  // input is a string
+  // output is an error if false, otherwise true
+  let counter = 0;
+  let lastPositive = 0;
+  const pStack = new Stack();
+  for (let i = 0; i < string.length; i++) {
+    pStack.push(string[string.length - (i + 1)]);
+  }
 
-console.log(is_palindrome('A man, a plan, a canal: Panama'));
+  for (let i = 0; i < string.length; i++) {
+    const node = pStack.pop();
+    if (node === '(') {
+      lastPositive = i + 1; 
+      counter++;
+    } else if (node ===')') {
+      lastPositive--;
+      counter--;
+    }
+    if (counter < 0) {
+      return new Error(`The location of the error is ${i + 1}`);
+    }
+  }
+
+  if (counter > 0) {
+    return new Error(`The location of the error is ${lastPositive}`);
+  }
+  return true;
+
+}
+
+console.log(matchingParentheses(''));
 
 function main() {
   const starTrek = new Stack();
