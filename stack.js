@@ -38,18 +38,5 @@ class Stack {
 
 // writing our own stack and node class 
 
-class _Node2 {
-  constructor(data, next) {
-    this.data = data;
-    this.next = next;
-  }
-}
 
-class Stack2 {
-  constructor() {
-    this.top = null;
-  }
-
-
-}
 
