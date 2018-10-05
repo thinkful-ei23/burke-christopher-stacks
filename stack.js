@@ -37,7 +37,17 @@ class Stack {
 }
 
 // writing our own stack and node class 
+function peek(stack) {
+  return stack.top;
+}
 
+function display(stack, currentNode=stack.top) {
+  if (currentNode.next === null) {
+    return currentNode.data;
+  } else {
+    return currentNode.data + ' ' + display(stack, currentNode.next);
+  }
+}
 
 function main() {
   const starTrek = new Stack();
@@ -46,7 +56,8 @@ function main() {
   starTrek.push('McCoy');
   starTrek.push('Spock');
   starTrek.push('Kirk');
-  console.log(JSON.stringify(starTrek));
+  console.log(display(starTrek));
+  // console.log(JSON.stringify(starTrek));
 }
 
 main();
