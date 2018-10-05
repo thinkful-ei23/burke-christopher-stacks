@@ -57,9 +57,22 @@ class Queue {
 }
 
 function peek(queue) {
+  return queue.first;
+}
 
+function display(queue, currentNode = queue.first) {
+  if (currentNode.next === null) {
+    return currentNode.value;
+  } else {
+    return currentNode.value + ' ' + display(queue, currentNode.next);
+  }
 }
 
 function main() {
-
+  const starTrek = new Queue();
+  starTrek.queue('Kirk');
+  starTrek.queue('Spock');
+  starTrek.queue('Uhura');
+  starTrek.queue('Sulu');
+  starTrek.queue('Checkov');
 }
