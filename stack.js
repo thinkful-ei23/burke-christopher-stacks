@@ -96,20 +96,86 @@ function matchingParentheses(string) {
 
 }
 
-// console.log(matchingParentheses(''));
+function sortStack(stack) {
+  // 1 4 2 5
+  // top 1 2 3 4 bottom
+  // 
+  //
+  // first stack =   tempVariable = 4 second stack = 3 1 put the maximum in one
+  // alternate = 0, looking for max, first stack to second stack
+  // alternate = 1, looking for min, opposite
+
+  // first stack = 4 tempVariable = 3
+  let count = 6;
+  let alternate = 0; // telling you whether you're looking for the min or max
+  let tempNumber = 0;
+  const firstStack = stack;
+  const secondStack = new Stack();
+  while (count > 0) {
+    if (alternate === 0) { // looking for max
+      if (firstStack.top.next === null) {
+        firstStack.push(tempNumber);
+        tempNumber = 0;
+        alternate = 1;
+        console.log('here');
+      } else {
+        tempNumber = firstStack.pop();
+        if (firstStack.top.data > tempNumber) {
+          secondStack.push(tempNumber);
+          tempNumber = firstStack.pop();
+        } else {
+          secondStack.push(firstStack.pop());
+        }
+        console.log('first stack top max ' + firstStack.top);
+        console.log(tempNumber);
+        console.log('second Stack top max ' + secondStack.top);
+        // looking for min
+      }
+    } else {
+      if (secondStack.top.next === null) {
+        secondStack.push(tempNumber);
+        tempNumber = 0;
+        alternate = 0;
+      } else {// 3 4  1
+        tempNumber = secondStack.pop();
+        console.log(secondStack.top);
+        if (secondStack.top.data < tempNumber) {
+          secondStack.push(tempNumber);
+          tempNumber = secondStack.pop();
+        } else {
+          firstStack.push(secondStack.pop());
+        }
+        alternate = 0;
+        console.log('first stack min' + firstStack);
+        console.log(tempNumber);
+        console.log('second Stack min' + secondStack);
+      }
+    }
+  }
+  console.log(firstStack);
+  console.log(secondStack);
+  return firstStack;
+}
+
 
 function main() {
-  const starTrek = new Stack();
+  // const starTrek = new Stack();
 
-  starTrek.push('Scotty');
-  starTrek.push('McCoy');
-  starTrek.push('Spock');
-  starTrek.push('Kirk');
-  starTrek.pop();
-  starTrek.pop();
-  starTrek.pop();
+  // starTrek.push('Scotty');
+  // starTrek.push('McCoy');
+  // starTrek.push('Spock');
+  // starTrek.push('Kirk');
+  // starTrek.pop();
+  // starTrek.pop();
+  // starTrek.pop();
   // console.log(display(starTrek));
   // console.log(JSON.stringify(starTrek));
+  const unsortedStack = new Stack();
+  unsortedStack.push(2);
+  unsortedStack.push(4);
+  unsortedStack.push(1);
+  // 1 2 4
+  sortStack(unsortedStack);
 }
 
 main();
