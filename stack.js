@@ -39,4 +39,14 @@ class Stack {
 // writing our own stack and node class 
 
 
+function main() {
+  const starTrek = new Stack();
 
+  starTrek.push('Scotty');
+  starTrek.push('McCoy');
+  starTrek.push('Spock');
+  starTrek.push('Kirk');
+  console.log(JSON.stringify(starTrek));
+}
+
+main();
